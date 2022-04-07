@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G314" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Failure" representedClassName="Failure" syncable="YES" codeGenerationType="class">
+        <attribute name="errorCode" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="errorDomain" optional="YES" attributeType="String"/>
+        <relationship name="failure" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Response" inverseName="failure" inverseEntity="Response"/>
+    </entity>
+    <entity name="Request" representedClassName="Request" syncable="YES" codeGenerationType="class">
+        <attribute name="httpMethod" optional="YES" attributeType="String"/>
+        <attribute name="payload" optional="YES" attributeType="Binary"/>
+        <attribute name="requestURL" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Response" representedClassName="Response" syncable="YES" codeGenerationType="class">
+        <relationship name="failure" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Failure" inverseName="failure" inverseEntity="Failure"/>
+        <relationship name="success" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Success" inverseName="success" inverseEntity="Success"/>
+    </entity>
+    <entity name="Success" representedClassName="Success" syncable="YES" codeGenerationType="class">
+        <attribute name="payloadBody" optional="YES" attributeType="Binary"/>
+        <attribute name="statusCode" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="success" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Response" inverseName="success" inverseEntity="Response"/>
+    </entity>
+    <elements>
+        <element name="Request" positionX="-52.8934326171875" positionY="-221.8425903320312" width="128" height="74"/>
+        <element name="Response" positionX="-434.18994140625" positionY="-302.4266357421875" width="128" height="73"/>
+        <element name="Failure" positionX="-161.283935546875" positionY="112.8972778320312" width="128" height="88"/>
+        <element name="Success" positionX="-466.800537109375" positionY="-0.38006591796875" width="128" height="88"/>
+    </elements>
+</model>
