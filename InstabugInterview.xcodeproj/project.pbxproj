@@ -19,9 +19,7 @@
 		24AA93CD25AF0F0D007588C7 /* InstabugNetworkClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24AA93B825AF0F0D007588C7 /* InstabugNetworkClient.framework */; };
 		24AA93CE25AF0F0D007588C7 /* InstabugNetworkClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24AA93B825AF0F0D007588C7 /* InstabugNetworkClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24AA93D925AF0F24007588C7 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA93D825AF0F24007588C7 /* NetworkClient.swift */; };
-		844C860927FF37BC0017EB54 /* NetworkClientCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 844C85F327FF37BC0017EB54 /* NetworkClientCoreData.xcdatamodeld */; };
 		844C861727FF382D0017EB54 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C85F627FF37BC0017EB54 /* Response.swift */; };
-		844C861827FF38310017EB54 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C85F727FF37BC0017EB54 /* Request.swift */; };
 		844C861927FF38340017EB54 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C85F927FF37BC0017EB54 /* CoreDataError.swift */; };
 		844C861A27FF38370017EB54 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C85FA27FF37BC0017EB54 /* PersistentContainer.swift */; };
 		844C861B27FF383B0017EB54 /* RequestOperationsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C85FB27FF37BC0017EB54 /* RequestOperationsHandler.swift */; };
@@ -31,6 +29,12 @@
 		844C861F27FF384E0017EB54 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C85FF27FF37BC0017EB54 /* APIError.swift */; };
 		844C862027FF38510017EB54 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C860027FF37BC0017EB54 /* HTTPMethod.swift */; };
 		844C862127FF38540017EB54 /* ResponseValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C860127FF37BC0017EB54 /* ResponseValidation.swift */; };
+		844C862827FF3D830017EB54 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C862427FF3CDA0017EB54 /* SessionManager.swift */; };
+		844C862927FF3E050017EB54 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C862227FF3AC70017EB54 /* APIRouter.swift */; };
+		844C862D27FF43380017EB54 /* NetworkClientCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 844C85F327FF37BC0017EB54 /* NetworkClientCoreData.xcdatamodeld */; };
+		844C863027FF43B30017EB54 /* NSManagedObjectExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C862E27FF439C0017EB54 /* NSManagedObjectExtention.swift */; };
+		844C863127FF44270017EB54 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C85F727FF37BC0017EB54 /* Request.swift */; };
+		844C863427FF696A0017EB54 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C863327FF696A0017EB54 /* LoadingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +103,10 @@
 		844C85FF27FF37BC0017EB54 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		844C860027FF37BC0017EB54 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		844C860127FF37BC0017EB54 /* ResponseValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseValidation.swift; sourceTree = "<group>"; };
+		844C862227FF3AC70017EB54 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		844C862427FF3CDA0017EB54 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		844C862E27FF439C0017EB54 /* NSManagedObjectExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtention.swift; sourceTree = "<group>"; };
+		844C863327FF696A0017EB54 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +159,7 @@
 		24AA939D25AF0DA4007588C7 /* InstabugInterview */ = {
 			isa = PBXGroup;
 			children = (
+				844C863227FF69370017EB54 /* View */,
 				844C85F227FF37BC0017EB54 /* CoreData */,
 				844C85F027FF37BC0017EB54 /* Extentions */,
 				844C85FC27FF37BC0017EB54 /* NetworkManager */,
@@ -188,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				844C85F127FF37BC0017EB54 /* DataExtention.swift */,
+				844C862E27FF439C0017EB54 /* NSManagedObjectExtention.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -229,8 +239,18 @@
 				844C85FF27FF37BC0017EB54 /* APIError.swift */,
 				844C860027FF37BC0017EB54 /* HTTPMethod.swift */,
 				844C860127FF37BC0017EB54 /* ResponseValidation.swift */,
+				844C862227FF3AC70017EB54 /* APIRouter.swift */,
+				844C862427FF3CDA0017EB54 /* SessionManager.swift */,
 			);
 			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		844C863227FF69370017EB54 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				844C863327FF696A0017EB54 /* LoadingButton.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,8 +398,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				24AA93A325AF0DA4007588C7 /* ViewController.swift in Sources */,
+				844C862927FF3E050017EB54 /* APIRouter.swift in Sources */,
+				844C863427FF696A0017EB54 /* LoadingButton.swift in Sources */,
 				24AA939F25AF0DA4007588C7 /* AppDelegate.swift in Sources */,
-				844C860927FF37BC0017EB54 /* NetworkClientCoreData.xcdatamodeld in Sources */,
 				24AA93A125AF0DA4007588C7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,11 +411,14 @@
 			files = (
 				844C861727FF382D0017EB54 /* Response.swift in Sources */,
 				844C861D27FF38480017EB54 /* RequestConvertible.swift in Sources */,
-				844C861827FF38310017EB54 /* Request.swift in Sources */,
+				844C862D27FF43380017EB54 /* NetworkClientCoreData.xcdatamodeld in Sources */,
+				844C863027FF43B30017EB54 /* NSManagedObjectExtention.swift in Sources */,
 				844C862027FF38510017EB54 /* HTTPMethod.swift in Sources */,
 				844C861F27FF384E0017EB54 /* APIError.swift in Sources */,
 				844C861B27FF383B0017EB54 /* RequestOperationsHandler.swift in Sources */,
+				844C863127FF44270017EB54 /* Request.swift in Sources */,
 				844C861A27FF38370017EB54 /* PersistentContainer.swift in Sources */,
+				844C862827FF3D830017EB54 /* SessionManager.swift in Sources */,
 				844C861C27FF38430017EB54 /* DataExtention.swift in Sources */,
 				24AA93D925AF0F24007588C7 /* NetworkClient.swift in Sources */,
 				844C862127FF38540017EB54 /* ResponseValidation.swift in Sources */,
@@ -748,6 +772,7 @@
 			currentVersion = 844C85F427FF37BC0017EB54 /* NetworkClientCoreData.xcdatamodel */;
 			path = NetworkClientCoreData.xcdatamodeld;
 			sourceTree = "<group>";
+			usesTabs = 0;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
