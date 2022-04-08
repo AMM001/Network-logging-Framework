@@ -12,9 +12,7 @@ Network logging Framework ( InstaBug Technical Task )
 Network logging Framework
 Intro
 The attached starter project provides a very basic HTTP networking framework that
-exposes 4 public APIs, letting users make different types of HTTP requests. To
-complete this task, you have to build some extra functionality on top of the starter
-project to store all requests that are made by the framework.
+exposes 4 public APIs, letting users make different types of HTTP requests.
 
 
 ## Core Data Entities 
