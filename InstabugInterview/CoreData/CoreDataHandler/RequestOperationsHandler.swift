@@ -16,10 +16,11 @@ open class RequestOperationsHandler {
         
     }
     
+    //MARK:- Save CoreData
     func save(context: NSManagedObjectContext, values: RequestConvertible, operationResult: OperationResult) {
         context.perform { [weak self] in
             let responseEntity = Response(context: context)
-            let request = Request(context: context)
+            let requestEntity = Request(context: context)
             switch operationResult {
             case .result(let data, let response):
                 let responseSuccess = Success(context: context)
@@ -32,13 +33,15 @@ open class RequestOperationsHandler {
                 responseError.errorCode = Int64(response?.statusCode ?? 0)
                 responseEntity.failure = responseError
             }
-            request.httpMethod = values.method.rawValue
-            request.payload = values.$parameters
-            request.requestURL = values.baseURL + values.endPoint
+            requestEntity.httpMethod = values.method.rawValue
+            requestEntity.payload = values.$parameters
+            requestEntity.requestURL = values.baseURL + values.endPoint
             self?.save(context: context)
         }
     }
     
+    
+    //MARK:- fetchRequests && fetchResponses
     func recordsLimitValidation(in context: NSManagedObjectContext) {
         context.perform { [weak self] in
             let fetchRequests = Request.fetchRequest()
@@ -49,6 +52,8 @@ open class RequestOperationsHandler {
         }
     }
     
+    //MARK:- Limitation Records
+    //The framework should store up to 1,000 records. A record contains a request/response pair.
     func limitValidation(context: NSManagedObjectContext, fetchRequests: NSFetchRequest<NSFetchRequestResult>...) {
         do {
             for fetchRequest in fetchRequests {
@@ -75,6 +80,23 @@ open class RequestOperationsHandler {
         } catch {
             print("Error: Failed to insert save request: \(error)")
         }
+    }
+    
+    //MARK:- Get Data Records
+    public func getDataRecords(context: NSManagedObjectContext) -> [String] {
+        var requestType = [String]()
+        do {
+            let results   = try context.fetch(Request.fetchRequest())
+            if  let dataRecords = results as? [Request] {
+                for record in dataRecords {
+                    print("getDataRecords.........\(record.httpMethod ?? "")")
+                    requestType.append(record.httpMethod ?? "")
+                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error)")
+        }
+        return requestType
     }
     
     public func deleteAllRecords() {

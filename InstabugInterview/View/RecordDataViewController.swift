@@ -67,18 +67,25 @@ class ViewController: UIViewController {
     }
     
     @IBAction func deleteRequestBtn(_ sender: Any) {
-        self.deleteRequestBtn.showLoading()
-        NetworkClient.instance.request(with: APIRouter.deleteRequest) { result in
-            self.deleteRequestBtn.hideLoading()
-            switch result {
-            case .result(_, let response):
-                print(response!.statusCode)
-                self.deleteRequestBtn.setTitle("delete Request Stored ....", for: .normal)
-            case .error(let error, _):
-                print(error!.localizedDescription)
-                self.deleteRequestBtn.setTitle("delete Request Failed to Stored ....", for: .normal)
-            }
-        }
+        let context = PersistentContainer.shared.viewContext
+        RequestOperationsHandler.shared.getDataRecords(context: context)
+//        self.deleteRequestBtn.showLoading()
+//        NetworkClient.instance.request(with: APIRouter.deleteRequest) { result in
+//            self.deleteRequestBtn.hideLoading()
+//            switch result {
+//            case .result(_, let response):
+//                print(response!.statusCode)
+//                self.deleteRequestBtn.setTitle("delete Request Stored ....", for: .normal)
+//            case .error(let error, _):
+//                print(error!.localizedDescription)
+//                self.deleteRequestBtn.setTitle("delete Request Failed to Stored ....", for: .normal)
+//            }
+//        }
     }
+    
+    @IBAction func loadDataBtn(_ sender: Any) {
+        
+    }
+    
 }
 
