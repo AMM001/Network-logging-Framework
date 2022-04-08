@@ -61,18 +61,6 @@ open class NetworkClient: NSObject, ResponseValidation {
         self.sessionManager = sessionManager
     }
     
-    internal func dataTask(with request: URLRequestConvertible, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask? {
-        guard let urlRequest = try? request.asURLRequest() else {
-            completionHandler(nil, nil, APIError.invalidRequest)
-            return nil
-        }
-        
-        let dataTask = sessionManager?.session?.dataTask(with: urlRequest) { (data, response, error) in
-            completionHandler(data, response, error)
-        }
-        return dataTask
-    }
-    
     open func request(with request: URLRequestConvertible, completion: @escaping (OperationResult) -> Void) {
         let task = self.dataTask(with: request, completionHandler: { [weak self] (data, urlResponse, error) in
             guard let self = self else {return}
@@ -85,14 +73,17 @@ open class NetworkClient: NSObject, ResponseValidation {
         })
         task?.resume()
     }
-    
-    func validateRequest() {
-        let context = PersistentContainer.shared.viewContext
-        dispatchQueue.sync() {
-            print("recordsLimitValidation start")
-            RequestOperationsHandler.shared.recordsLimitValidation(in: context)
-            print("recordsLimitValidation finished")
+
+    internal func dataTask(with request: URLRequestConvertible, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask? {
+        guard let urlRequest = try? request.asURLRequest() else {
+            completionHandler(nil, nil, APIError.invalidRequest)
+            return nil
         }
+        
+        let dataTask = sessionManager?.session?.dataTask(with: urlRequest) { (data, response, error) in
+            completionHandler(data, response, error)
+        }
+        return dataTask
     }
     
     func saveRequestData(request: URLRequestConvertible, operationResult: OperationResult) {
@@ -108,6 +99,14 @@ open class NetworkClient: NSObject, ResponseValidation {
         }
     }
     
+    deinit {
+        sessionManager?.session?.finishTasksAndInvalidate()
+    }
+}
+
+extension NetworkClient {
+    
+    //MARK:- handelServerResponse
     func handelServerResponse(data: Data?, urlResponse: URLResponse?, error: Error?,  completion: @escaping (OperationResult) -> Void) {
         guard let urlResponse = urlResponse as? HTTPURLResponse else {
             completion(OperationResult.error(APIError.invalidResponse, nil))
@@ -122,7 +121,14 @@ open class NetworkClient: NSObject, ResponseValidation {
         }
     }
     
-    deinit {
-        sessionManager?.session?.finishTasksAndInvalidate()
+    //MARK:- validateRequest ( recordsLimitValidation )
+    func validateRequest() {
+        let context = PersistentContainer.shared.viewContext
+        dispatchQueue.sync() {
+            print("recordsLimitValidation start")
+            RequestOperationsHandler.shared.recordsLimitValidation(in: context)
+            print("recordsLimitValidation finished")
+        }
     }
+
 }

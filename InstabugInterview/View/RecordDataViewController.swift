@@ -8,7 +8,7 @@
 import UIKit
 import InstabugNetworkClient
 
-class ViewController: UIViewController {
+class RecordDataViewController: UIViewController {
     
     //MARK:-Outlets
     @IBOutlet weak var postRequestBtn: LoadingButton!
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
                 print(response!.statusCode)
                 self.postRequestBtn.setTitle("Post Request Stored ....", for: .normal)
             case .error(let error, _):
-                self.postRequestBtn.setTitle("Post Request Failed to Stored ....", for: .normal)
+                self.postRequestBtn.setTitle("Post Request return error & Stored....", for: .normal)
                 print(error!.localizedDescription)
             }
         }
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
                 self.getRequestBtn.setTitle("get Request Stored ....", for: .normal)
             case .error(let error, _):
                 print(error!.localizedDescription)
-                self.getRequestBtn.setTitle("get Request Failed to Stored ....", for: .normal)
+                self.getRequestBtn.setTitle("get Request return error & Stored ....", for: .normal)
             }
         }
     }
@@ -61,31 +61,30 @@ class ViewController: UIViewController {
                 print(response!.statusCode)
             case .error(let error, _):
                 print(error!.localizedDescription)
-                self.putRequestBtn.setTitle("put Request Failed to Stored ....", for: .normal)
+                self.putRequestBtn.setTitle("put Request return error & Stored....", for: .normal)
             }
         }
     }
     
     @IBAction func deleteRequestBtn(_ sender: Any) {
-        let context = PersistentContainer.shared.viewContext
-        RequestOperationsHandler.shared.getDataRecords(context: context)
-//        self.deleteRequestBtn.showLoading()
-//        NetworkClient.instance.request(with: APIRouter.deleteRequest) { result in
-//            self.deleteRequestBtn.hideLoading()
-//            switch result {
-//            case .result(_, let response):
-//                print(response!.statusCode)
-//                self.deleteRequestBtn.setTitle("delete Request Stored ....", for: .normal)
-//            case .error(let error, _):
-//                print(error!.localizedDescription)
-//                self.deleteRequestBtn.setTitle("delete Request Failed to Stored ....", for: .normal)
-//            }
-//        }
+        self.deleteRequestBtn.showLoading()
+        NetworkClient.instance.request(with: APIRouter.deleteRequest) { result in
+            self.deleteRequestBtn.hideLoading()
+            switch result {
+            case .result(_, let response):
+                print(response!.statusCode)
+                self.deleteRequestBtn.setTitle("delete Request Stored ....", for: .normal)
+            case .error(let error, _):
+                print(error!.localizedDescription)
+                self.deleteRequestBtn.setTitle("delete Request return error & Stored....", for: .normal)
+            }
+        }
     }
     
     @IBAction func loadDataBtn(_ sender: Any) {
-        
+        if let loadViewController = storyboard?.instantiateViewController(withIdentifier: "LoadDataViewController") as? LoadDataViewController {
+            self.navigationController?.pushViewController(loadViewController, animated: true)
+        }
     }
-    
 }
 

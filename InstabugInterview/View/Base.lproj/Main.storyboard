@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ony-5Y-0Da">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BwL-Bu-a4X">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -12,7 +12,7 @@
         <!--Network Logging-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InstabugInterview" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RecordDataViewController" customModule="InstabugInterview" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Post Request"/>
                                         <connections>
-                                            <action selector="postRequestBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="afO-CA-ekA"/>
+                                            <action selector="postRequestBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6RB-h2-6Sp"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DtO-zi-Kvx" customClass="LoadingButton" customModule="InstabugInterview" customModuleProvider="target">
@@ -37,7 +37,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Get Request"/>
                                         <connections>
-                                            <action selector="getRequestBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Onk-MT-gSm"/>
+                                            <action selector="getRequestBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5T9-Yk-Yw9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fI-aR-JWZ" customClass="LoadingButton" customModule="InstabugInterview" customModuleProvider="target">
@@ -47,7 +47,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Put Request"/>
                                         <connections>
-                                            <action selector="putRequestBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4w6-uh-vsl"/>
+                                            <action selector="putRequestBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M1M-Wv-GBz"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRM-4S-tZq" customClass="LoadingButton" customModule="InstabugInterview" customModuleProvider="target">
@@ -57,7 +57,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Delete Request"/>
                                         <connections>
-                                            <action selector="deleteRequestBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ieP-p5-CL9"/>
+                                            <action selector="deleteRequestBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LQX-CP-MOy"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -66,6 +66,19 @@
                                     <constraint firstAttribute="height" constant="300" id="Zhc-TA-vSw"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87i-jj-bwC">
+                                <rect key="frame" x="20" y="595" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8hu-eZ-ZTg"/>
+                                </constraints>
+                                <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Load Data"/>
+                                <connections>
+                                    <action selector="loadDataBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s5g-8r-9BB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -73,38 +86,95 @@
                             <constraint firstItem="8Be-sJ-MR6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="PJw-Vo-8nT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Be-sJ-MR6" secondAttribute="trailing" constant="30" id="YSw-c7-T2T"/>
                             <constraint firstItem="8Be-sJ-MR6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="fco-3s-AbH"/>
+                            <constraint firstItem="87i-jj-bwC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="oQA-Gm-NnM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="87i-jj-bwC" secondAttribute="trailing" constant="20" id="pwr-Hl-xwl"/>
+                            <constraint firstItem="87i-jj-bwC" firstAttribute="top" secondItem="8Be-sJ-MR6" secondAttribute="bottom" constant="107" id="wEc-by-vAm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Network Logging" id="Ey9-UC-DBw"/>
                     <connections>
-                        <outlet property="deleteRequestBtn" destination="vRM-4S-tZq" id="TAp-Vp-IVF"/>
-                        <outlet property="getRequestBtn" destination="DtO-zi-Kvx" id="2aD-Pw-ZFV"/>
-                        <outlet property="postRequestBtn" destination="5lb-L5-Ij4" id="zNF-9Q-kmL"/>
-                        <outlet property="putRequestBtn" destination="4fI-aR-JWZ" id="dw3-3U-VrT"/>
+                        <outlet property="deleteRequestBtn" destination="vRM-4S-tZq" id="XDf-XW-Jf9"/>
+                        <outlet property="getRequestBtn" destination="DtO-zi-Kvx" id="Nba-x8-ZI7"/>
+                        <outlet property="postRequestBtn" destination="5lb-L5-Ij4" id="AKg-f4-WT8"/>
+                        <outlet property="putRequestBtn" destination="4fI-aR-JWZ" id="vsT-nd-QAK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="93.75"/>
+            <point key="canvasLocation" x="1886.9565217391305" y="246.42857142857142"/>
+        </scene>
+        <!--Load Data View Controller-->
+        <scene sceneID="Hpr-cf-AUj">
+            <objects>
+                <viewController storyboardIdentifier="LoadDataViewController" id="N0g-EE-wBx" customClass="LoadDataViewController" customModule="InstabugInterview" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LcF-1k-lDJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QPM-Uq-Y2T">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="C9M-eJ-dWA" style="IBUITableViewCellStyleDefault" id="GVm-4k-9t1">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GVm-4k-9t1" id="reU-qI-lct">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C9M-eJ-dWA">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="N0g-EE-wBx" id="TPt-RP-5iR"/>
+                                    <outlet property="delegate" destination="N0g-EE-wBx" id="33O-Nb-9GL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xTa-MC-29k"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QPM-Uq-Y2T" firstAttribute="leading" secondItem="xTa-MC-29k" secondAttribute="leading" id="Nv6-JZ-cxf"/>
+                            <constraint firstItem="QPM-Uq-Y2T" firstAttribute="trailing" secondItem="xTa-MC-29k" secondAttribute="trailing" id="SLH-4s-y0T"/>
+                            <constraint firstItem="QPM-Uq-Y2T" firstAttribute="top" secondItem="xTa-MC-29k" secondAttribute="top" id="hW2-HS-FlA"/>
+                            <constraint firstItem="xTa-MC-29k" firstAttribute="bottom" secondItem="QPM-Uq-Y2T" secondAttribute="bottom" id="yzE-Ad-XTj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bGn-uF-g2O"/>
+                    <connections>
+                        <outlet property="tableView" destination="QPM-Uq-Y2T" id="XnU-wu-b2c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kc4-sg-Y5r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2645" y="246"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="a27-zo-sb4">
+        <scene sceneID="chw-Dw-5UV">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ony-5Y-0Da" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BwL-Bu-a4X" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="In6-Ad-TVp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E8g-JS-6h2">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" systemColor="tintColor"/>
+                        <color key="backgroundColor" systemColor="systemGray3Color"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="DHC-UT-UgC"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="i6n-9y-saQ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qOz-3I-dmO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FLA-vi-XWA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="93.75"/>
+            <point key="canvasLocation" x="976.81159420289862" y="246.42857142857142"/>
         </scene>
     </scenes>
     <resources>
@@ -113,6 +183,9 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,9 +198,6 @@
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

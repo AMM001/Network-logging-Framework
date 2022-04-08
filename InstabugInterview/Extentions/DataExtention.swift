@@ -18,6 +18,7 @@ extension Data {
         return size
     }
     
+    //The payload body for request and response should not be larger than 1 MB.
     func validate() -> Data? {
         guard self.convertToMB() < 1 else { return Data("payload too large".utf8)}
         return self

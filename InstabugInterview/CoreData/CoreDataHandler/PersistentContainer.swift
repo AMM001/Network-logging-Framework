@@ -28,5 +28,4 @@ open class PersistentContainer: NSPersistentContainer {
         })
         viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
     }
-    
 }

@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import CoreData
+
+class DataRecords  {
+    
+    var requestRecord:Request?
+    var responseRecord:Response?
+}
