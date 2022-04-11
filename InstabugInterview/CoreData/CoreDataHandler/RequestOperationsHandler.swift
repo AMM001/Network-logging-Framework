@@ -85,7 +85,6 @@ open class RequestOperationsHandler {
     //MARK:- Get Data Records
     public func getDataRecords(context: NSManagedObjectContext) -> [String] {
         var requestType = [String]()
-        context.perform { [weak self] in
             do {
                 let results   = try context.fetch(Request.fetchRequest())
                 if  let dataRecords = results as? [Request] {
@@ -97,7 +96,7 @@ open class RequestOperationsHandler {
             } catch let error as NSError {
                 print("Could not fetch \(error)")
             }
-        }
+        
         return requestType
     }
     
